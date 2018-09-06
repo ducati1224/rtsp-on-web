@@ -11,7 +11,12 @@ stream
 
 // routing config
 app.get("/", handleRtsp, function(req, res){
-    res.render('index');
+    const options = req.query;
+    var message = '';
+    if (options.live === 'true') {
+        message = `Live on server ${options.s} channel ${options.c.slice(2)}`
+    }
+    res.render('index', {message});
 });
 
 
