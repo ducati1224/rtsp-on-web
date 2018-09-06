@@ -1,15 +1,18 @@
 const express = require('express');
-const rtspDecoder = require('./middleware/rtspDecoder');
-
+const handleRtsp = require('./middleware/handleRtsp');
+const stream = require('./helpers/rtspDecoder');
 // express config
 const app = express();
 app.use(express.static(__dirname + '/public'));
 app.set("view engine", "ejs");
 
+// create socket on port 9999
+stream
+
 // routing config
-app.get("/", rtspDecoder,function(req, res){
+app.get("/", handleRtsp, function(req, res){
     res.render('index');
-})
+});
 
 
 
