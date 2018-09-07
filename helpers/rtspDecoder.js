@@ -1,4 +1,4 @@
-const Stream = require("node-rtsp-stream");
+const Stream = require("./node-rtsp-stream");
 
 let stream = new Stream({
     name: "rtsp-stream",
@@ -8,6 +8,6 @@ let stream = new Stream({
     height: 480
 });
 
-console.log('socket created')
+// console.log('socket created')
 
 module.exports = stream;

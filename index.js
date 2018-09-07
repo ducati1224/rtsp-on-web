@@ -7,7 +7,7 @@ app.use(express.static(__dirname + '/public'));
 app.set("view engine", "ejs");
 
 // create socket on port 9999
-stream
+var ws = stream;
 
 // routing config
 app.get("/", handleRtsp, function(req, res){

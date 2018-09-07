@@ -1,7 +1,9 @@
 const stream = require('../helpers/rtspDecoder');
 const vmsList = require('../helpers/config');
+const child_process = require("child_process");
 
 const handleRtsp = function(req, res, next){
+    // var stop = child_process.spawn("killall", ["ffmpeg"]);
     var options = req.query;
     var rtspUrl = '';
     if (options.s) {
