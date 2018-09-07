@@ -3,7 +3,6 @@ const vmsList = require('../helpers/config');
 const child_process = require("child_process");
 
 const handleRtsp = function(req, res, next){
-    // var stop = child_process.spawn("killall", ["ffmpeg"]);
     var options = req.query;
     var rtspUrl = '';
     if (options.s) {
@@ -15,8 +14,11 @@ const handleRtsp = function(req, res, next){
             } else {
                 rtspUrl = `rtsp://${account}:${password}@${ip}:${port}/Media/Database/Normal?HNAME=${options.c}&LOCTIME=true&STIME=${options.start}&ETIME=${options.end}`;
             }
-            stream.streamUrl = rtspUrl;
-            // stream.mpeg1Muxer.stream.kill("SIGINT");
+            if (stream.mpeg1Muxer) {
+                console.log('child exist')
+            } else {
+                console.log('first connect')
+            }
             stream.startMpeg1Stream();
         } else {
             res.send(`Can't not find VMS server ${options.s}`)
