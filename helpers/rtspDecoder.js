@@ -8,6 +8,4 @@ let stream = new Stream({
     height: 480
 });
 
-// console.log('socket created')
-
 module.exports = stream;

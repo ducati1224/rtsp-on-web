@@ -15,7 +15,6 @@
     this.stream = child_process.spawn("ffmpeg", ["-rtsp_transport", "tcp", "-i", this.url, '-s', '720x480', '-f', 'mpeg1video', '-b:v', '1000k', '-an', '-r', '24', '-'], {
       detached: true
     });
-    this.pid = -self.
     this.inputStreamStarted = true;
     this.stream.stdout.on('data', function(data) {
       return self.emit('mpeg1data', data);

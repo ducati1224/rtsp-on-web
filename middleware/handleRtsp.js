@@ -15,10 +15,9 @@ const handleRtsp = function(req, res, next){
                 rtspUrl = `rtsp://${account}:${password}@${ip}:${port}/Media/Database/Normal?HNAME=${options.c}&LOCTIME=true&STIME=${options.start}&ETIME=${options.end}`;
             }
             if (stream.mpeg1Muxer) {
-                console.log('child exist')
-            } else {
-                console.log('first connect')
+                stream.mpeg1Muxer.stream.kill('SIGINT');
             }
+            stream.streamUrl = rtspUrl;
             stream.startMpeg1Stream();
         } else {
             res.send(`Can't not find VMS server ${options.s}`)
